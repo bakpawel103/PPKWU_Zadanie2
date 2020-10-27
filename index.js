@@ -18,13 +18,17 @@ app.get('/validate', (req, res) => {
 });
 
 var isValid = (string) => {
-  if(!hasLowerCase(string)) return false;
-
+  if(!hasLowerCase(string) || !hasUpperCase(string)) return false;
   return true;
 }
 
 var hasLowerCase = (string) => {
   if(string.toUpperCase() != string) return true;
+  return false;
+}
+
+var hasUpperCase = (string) => {
+  if(string.toLowerCase() != string) return true;
   return false;
 }
 
