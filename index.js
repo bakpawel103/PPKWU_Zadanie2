@@ -14,13 +14,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/validate', (req, res) => {
-  res.json({ result: isValid(req.body.string) });
+  res.json({ result: {
+    hasLowerCase: hasLowerCase(req.body.string),
+    hasUpperCase: hasUpperCase(req.body.string)
+  }});
 });
-
-var isValid = (string) => {
-  if(!hasLowerCase(string) || !hasUpperCase(string)) return false;
-  return true;
-}
 
 var hasLowerCase = (string) => {
   if(string.toUpperCase() != string) return true;
