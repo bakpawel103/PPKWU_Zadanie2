@@ -14,12 +14,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/validate', (req, res) => {
-  res.json({ result: {
-    hasLowerCase: hasLowerCase(req.body.string),
-    hasUpperCase: hasUpperCase(req.body.string),
-    hasNumbers: hasNumbers(req.body.string),
-    hasSpecialCharacters: hasSpecialChars(req.body.string)
-  }});
+  if(req.body || req.body.string || !(typeof req.body.string == "string")) {
+    res.status(500).send("Pass body with string property");
+  } else {
+    res.json({ result: {
+      hasLowerCase: hasLowerCase(req.body.string),
+      hasUpperCase: hasUpperCase(req.body.string),
+      hasNumbers: hasNumbers(req.body.string),
+      hasSpecialCharacters: hasSpecialChars(req.body.string)
+    }});
+  }
 });
 
 var hasLowerCase = (string) => {
