@@ -16,7 +16,8 @@ app.get('/', (req, res) => {
 app.get('/validate', (req, res) => {
   res.json({ result: {
     hasLowerCase: hasLowerCase(req.body.string),
-    hasUpperCase: hasUpperCase(req.body.string)
+    hasUpperCase: hasUpperCase(req.body.string),
+    hasNumbers: hasNumbers(req.body.string)
   }});
 });
 
@@ -28,6 +29,11 @@ var hasLowerCase = (string) => {
 var hasUpperCase = (string) => {
   if(string.toLowerCase() != string) return true;
   return false;
+}
+
+var hasNumbers = (string) => {
+  var hasNumber = /\d/;
+  return hasNumber.test(string);
 }
 
 app.listen(port, () => {
