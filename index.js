@@ -14,8 +14,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/validate', (req, res) => {
-  res.json({ result: req.body });
+  res.json({ result: checkValidity(req.body) });
 });
+
+var checkValidity = (string) => {
+  console.log(string);
+
+  return string;
+}
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`)
