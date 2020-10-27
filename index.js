@@ -13,6 +13,10 @@ app.get('/', (req, res) => {
   res.send('Welcome at site, that will check your password validity');
 });
 
+app.get('/validate', (req, res) => {
+  res.json({ result: req.body });
+});
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`)
 })
