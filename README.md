@@ -10,8 +10,11 @@ To start server, just go to project directory with terminal and enter command:
 ## Endpoints:
 
 `GET /validate` <- check string with chars occurences
+
 @body (:string)
+
 @return json with occurences of each chars
+
 
 Example body:
 `{
