@@ -17,7 +17,8 @@ app.get('/validate', (req, res) => {
   res.json({ result: {
     hasLowerCase: hasLowerCase(req.body.string),
     hasUpperCase: hasUpperCase(req.body.string),
-    hasNumbers: hasNumbers(req.body.string)
+    hasNumbers: hasNumbers(req.body.string),
+    hasSpecialCharacters: hasSpecialChars(req.body.string)
   }});
 });
 
@@ -32,8 +33,13 @@ var hasUpperCase = (string) => {
 }
 
 var hasNumbers = (string) => {
-  var hasNumber = /\d/;
-  return hasNumber.test(string);
+  var format = /\d/;
+  return format.test(string);
+}
+
+var hasSpecialChars = (string) => {
+  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  return format.test(string);
 }
 
 app.listen(port, () => {
