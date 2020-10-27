@@ -4,29 +4,30 @@ It's a Nodejs REST Api project that will check privided string witch big letters
 
 ## Starting server tutorial:
 
-To start server, just go to project directory with terminal and enter command:
-`node index.js`
+To start server, just go to project directory with terminal and enter command:  
+> node index.js
 
 ## Endpoints:
 
-`GET /validate` <- check string with chars occurences
+`GET /validate` <- check string with chars occurences  
+@body (:string)  
+@return json with occurences of each chars  
 
-@body (:string)
-
-@return json with occurences of each chars
-
-
-Example body:
-`{
+**Example body:**  
+```javascript
+{
   "string": "TESTgfgd1gdf"
-}`
-
-Example result:
-`{
-  "result": {
-    "hasLowerCase": true,
-    "hasUpperCase": true,
-    "hasNumbers": true,
-    "hasSpecialCharacters": false
-  }
-}`
+}
+```
+  
+**Example result:**  
+```javascript
+{  
+  "result": {  
+    "hasLowerCase": true,  
+    "hasUpperCase": true,  
+    "hasNumbers": true,  
+    "hasSpecialCharacters": false  
+  }  
+}
+```
