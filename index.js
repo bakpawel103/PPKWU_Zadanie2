@@ -14,13 +14,18 @@ app.get('/', (req, res) => {
 });
 
 app.get('/validate', (req, res) => {
-  res.json({ result: checkValidity(req.body) });
+  res.json({ result: isValid(req.body.string) });
 });
 
-var checkValidity = (string) => {
-  console.log(string);
+var isValid = (string) => {
+  if(!hasLowerCase(string)) return false;
 
-  return string;
+  return true;
+}
+
+var hasLowerCase = (string) => {
+  if(string.toUpperCase() != string) return true;
+  return false;
 }
 
 app.listen(port, () => {
